@@ -1,3 +1,23 @@
-prabhas bhaiiiiiiiiiiiii
- koushik
-worthuuu varmaaaaaaaa
+pipeline {
+    agent any
+   
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout from your Git repository
+                git branch:'main', url:'https://github.com/HarshithaGajabinkar/gcdjenkinspython.git'
+            }
+        }
+       
+        stage('Run Python Script') {
+            steps {
+                // Run Python script (make sure python3 is installed and available)
+                script {
+                    //sh 'python3 your_script.py'
+                    // or for Windows, use bat instead of sh
+                    bat 'python gcd.py'
+                }
+            }
+        }
+    }
+}
